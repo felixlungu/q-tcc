@@ -9,4 +9,4 @@ C "scripting" in q/kdb+. see c.k for more details about its intended usage.
 
 PREREQUISTE:
 - TinyCC and its associated tcc.a library
-- kdb+ (any version >4.0)
+- kdb+ (any version >= 4.0)
