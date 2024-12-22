@@ -1,23 +1,3 @@
-/* c scripting for kdb+ */
-/* get tcc from http://download.savannah.gnu.org/releases/tinycc/ */
-/* uncompress, prepare Makefile and compile:
-    cd <tcc dir>
-   ./configure --cpu=x86
-or
-    ./configure --cpu=x86-64
-add this line to the generated config.h:
-    make
-
-compile c.so this as (for 64bit use -m64):
-mac osx:
-    gcc -dynamiclib -undefined dynamic_lookup -m32 -I <tcc dir> -o c.so c.c <tcc dir>/libtcc.a
-linux:
-    gcc -shared -m32 -I <tcc dir> -o c.so c.c <tcc dir>/libtcc.a
-
-install the c.so in right binary dir (for l32 in $QHOME/m32, k.h in $QHOME/c and c.k in $QHOME
-
-*/
-
 #include <stdlib.h>
 #include <stdio.h>
 
