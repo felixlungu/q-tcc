@@ -1,7 +1,7 @@
 # q-cc
 DISCLAIMER:
 - this is a "toy".
-- i have designed to fit my needs and whims only.
+- i have designed it to fit my needs and whims only.
 - don't use it for production or servers exposed to internet.
 
 
