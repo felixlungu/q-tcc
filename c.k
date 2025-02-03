@@ -38,10 +38,10 @@ dl:{[f;n] if[(#C) & ~"/*"~2#C;c:ct C;TS,::cc[CF;KH,"\n",c 0];CF::CF1;C::c 1];bs[
 
 
 N.B. :
-- .c.e is called by q by loading a .c file ( \l file.c ) or by "c)...". it will just append to .c.C global
-- the compilation (if there is code in .c.C) and binding of a C symbol to a K object is triggered by calling .c.dl by using thr last compilation 
+- .c.e is called by q when a ".c"  file is loaded ( \l file.c ) or by "c)...". it will just append to .c.C global
+- the compilation (if there is code in .c.C) and binding of a C symbol to a K object is triggered by calling .c.dl using the last compilation 
   context stored in .c.TS
-- .c.cf and .c.dl can be called from an open comment in the C file if a line starts with "k)" or "q)". q will not pass these lines to .c.e for processing
+- .c.cf and .c.dl can be called from an C multiline comment in the C file if a line starts with "k)" or "q)". q will not pass these lines to .c.e for processing
 
 ex1: define an "add" function in C and link the compiled symbol into q as "add"
 
@@ -52,7 +52,6 @@ ex2: load a C file and trigger the compilation and linking into a q function.
 
 ---   hypot.c  ---
 ------------------
-
 #include <math.h>
 K hypotenuse(K c1,K c2){if(-9!=c1->t||-9!=c2->t)R krr("type");R kf(hypot(c1->f,c2->f));}
 
@@ -68,6 +67,7 @@ q)-1"calling hypot[2;3]";
 q)hypot[2f;3f]
 
 */
-
 -----------------
+/ load the C file and run the commands in the multiline comment at the end of the file
+q)\l hypot.c
 
