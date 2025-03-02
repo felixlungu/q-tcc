@@ -6,16 +6,16 @@ CFLAGS=-I$(QHOME)/c/c
 LDFLAGS=-shared
 QARCH ?= l64arm
 
-cc.so: cc.c c.k
-	$(CC) $(CFLAGS) $(LDFLAGS) -o cc.so cc.c -ltcc
+qtcc.so: cc.c c.k
+	$(CC) $(CFLAGS) $(LDFLAGS) -o qtcc.so cc.c -ltcc
 
-install: cc.so 
+install: qtcc.so 
 	cp c.k $(QHOME)
-	cp cc.so $(QHOME)/$(QARCH)
+	cp qtcc.so $(QHOME)/$(QARCH)
 
 clean:
-	rm cc.so
+	rm qtcc.so
 
 uninstall:
 	rm $(QHOME)/c.k
-	rm $(QHOME)/$(QARCH)/cc.so
+	rm $(QHOME)/$(QARCH)/qtcc.so
