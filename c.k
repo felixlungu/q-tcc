@@ -14,11 +14,11 @@ e:{C,::"\n",x;}
 / alocate tcc context, compile and relocate.
 / don't call directly! use dl[] to triger the compilation of accumulated code in TS
 / cc[flg;code]
-cc:`cc 2:(`cc;2);
+cc:`tcc 2:(`cc;2);
 
 / bind a symbol from the current compiled context to a k object
 / bs:{[ts;s;n] ts: tcc state, s: symbol, n: number of args
-bs:`cc 2:(`bs;3)
+bs:`tcc 2:(`bs;3)
 
 / add compiler and liker flags for libtcc
 cf:{CF,::" ",x}
