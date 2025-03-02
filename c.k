@@ -14,11 +14,11 @@ e:{C,::"\n",x;}
 / alocate tcc context, compile and relocate.
 / don't call directly! use dl[] to triger the compilation of accumulated code in TS
 / cc[flg;code]
-cc:`tcc 2:(`cc;2);
+cc:`qtcc 2:(`cc;2);
 
 / bind a symbol from the current compiled context to a k object
 / bs:{[ts;s;n] ts: tcc state, s: symbol, n: number of args
-bs:`tcc 2:(`bs;3)
+bs:`qtcc 2:(`bs;3)
 
 / add compiler and liker flags for libtcc
 cf:{CF,::" ",x}
@@ -38,10 +38,11 @@ dl:{[f;n] if[(#C) & ~"/*"~2#C;c:ct C;TS,::cc[CF;KH,"\n",c 0];CF::CF1;C::c 1];bs[
 
 
 N.B. :
-- .c.e is called by q when a ".c"  file is loaded ( \l file.c ) or by "c)...". it will just append to .c.C global
+- .c.e is called by q for each line when a ".c" file is loaded ( \l file.c ) or by "c)...". it will just append the code to
+  the .c.C global variable
 - the compilation (if there is code in .c.C) and binding of a C symbol to a K object is triggered by calling .c.dl using the last compilation 
   context stored in .c.TS
-- .c.cf and .c.dl can be called from an C multiline comment in the C file if a line starts with "k)" or "q)". q will not pass these lines to .c.e for processing
+- .c.cf and .c.dl can be called from an C multiline comment in the .c/.h file if a line starts with "k)" or "q)". q will not pass these lines to .c.e for processing
 
 ex1: define an "add" function in C and link the compiled symbol into q as "add"
 
@@ -55,7 +56,7 @@ ex2: load a C file and trigger the compilation and linking into a q function.
 #include <math.h>
 K hypotenuse(K c1,K c2){if(-9!=c1->t||-9!=c2->t)R krr("type");R kf(hypot(c1->f,c2->f));}
 
-/*
+/* this is a C comment with embedded q directives
 add options for compilation. this should be done before any calls to .c.dl
 these lines are not intercepted as code by the C compiler since they are in a comment.
 kdb+ will intercept the lines that starts with a letter or followed by ")". in the case of "q)", this line is
