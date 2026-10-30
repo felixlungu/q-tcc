@@ -10,4 +10,4 @@ C "scripting" in q/kdb+. see c.k for more details about its intended usage.
 PREREQUISTE:
 - TinyCC > 0.28 and its associated tcc.a library
 - kdb+ (any version >= 4.0)
-- k.h from https://github.com/KxSystems/kdb/blob/master/c/c/k.h
+- k.h from [https://github.com/KxSystems/kdb/blob/master/c/c/k.h](https://github.com/KxSystems/kdb/blob/1daebf73349199b1318649fc2c5656cab2b4a7f2/c/c/k.h)
