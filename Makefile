@@ -7,15 +7,15 @@ LDFLAGS=-shared
 QARCH ?= l64arm
 
 qtcc.so: qtcc.c c.k
-        $(CC) $(CFLAGS) $(LDFLAGS) -o qtcc.so qtcc.c -ltcc1
+	$(CC) $(CFLAGS) $(LDFLAGS) -o qtcc.so qtcc.c -ltcc1
 
 install: qtcc.so
-        cp c.k $(QHOME)
-        cp qtcc.so $(QHOME)/$(QARCH)
+	cp c.k $(QHOME)
+	cp qtcc.so $(QHOME)/$(QARCH)
 
 clean:
-        rm qtcc.so
+	rm qtcc.so
 
 uninstall:
-        rm $(QHOME)/c.k
-        rm $(QHOME)/$(QARCH)/qtcc.so
+	rm $(QHOME)/c.k
+	rm $(QHOME)/$(QARCH)/qtcc.so
