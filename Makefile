@@ -3,7 +3,7 @@
 CC=tcc
 QHOME ?= $(HOME)/q
 CFLAGS=-I$(QHOME)/c/c -I/usr/local/include/
-LDFLAGS=-shared
+LDFLAGS=-shared -L/usr/local/lib
 QARCH ?= l64arm
 
 qtcc.so: qtcc.c c.k
