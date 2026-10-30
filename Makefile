@@ -6,8 +6,8 @@ CFLAGS=-I$(QHOME)/c/c -I/usr/local/include/
 LDFLAGS=-shared
 QARCH ?= l64arm
 
-qtcc.so: cc.c c.k
-        $(CC) $(CFLAGS) $(LDFLAGS) -o qtcc.so cc.c -ltcc1
+qtcc.so: qtcc.c c.k
+        $(CC) $(CFLAGS) $(LDFLAGS) -o qtcc.so qtcc.c -ltcc1
 
 install: qtcc.so
         cp c.k $(QHOME)
